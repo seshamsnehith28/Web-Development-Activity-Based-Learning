@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html >
+<head>
+  <title>Account Portal</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #172033;
+      --muted: #65718a;
+      --line: #dce2ec;
+      --surface: #ffffff;
+      --page: #f3f6fb;
+      --brand: #4f46e5;
+      --brand-dark: #3730a3;
+      --danger: #c62828;
+      --success: #16794a;
+      --focus: #a5b4fc;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      padding: 32px 16px;
+      display: grid;
+      place-items: center;
+      background:
+        radial-gradient(circle at 12% 12%, #e0e7ff 0, transparent 34%),
+        radial-gradient(circle at 88% 88%, #dbeafe 0, transparent 30%),
+        var(--page);
+      color: var(--ink);
+      font: 16px/1.5 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+    .shell { width: min(100%, 470px); }
+    .brand { text-align: center; margin-bottom: 22px; }
+    .brand-mark {
+      display: inline-grid; place-items: center; width: 46px; height: 46px;
+      border-radius: 14px; background: var(--brand); color: white;
+      font-weight: 800; font-size: 21px; box-shadow: 0 8px 22px #4f46e544;
+    }
+    .brand h1 { margin: 10px 0 2px; font-size: 25px; letter-spacing: -.5px; }
+    .brand p { margin: 0; color: var(--muted); font-size: 14px; }
+    .card {
+      background: var(--surface); border: 1px solid #e7ebf2; border-radius: 22px;
+      padding: clamp(22px, 5vw, 34px); box-shadow: 0 18px 55px #25345a12;
+    }
+    .view[hidden] { display: none; }
+    h2 { margin: 0 0 6px; font-size: 23px; letter-spacing: -.4px; }
+    .intro { margin: 0 0 23px; color: var(--muted); font-size: 14px; }
+    .field { margin: 0 0 17px; }
+    label { display: block; margin-bottom: 7px; font-size: 13px; font-weight: 650; }
+    input, select, textarea {
+      width: 100%; min-height: 47px; padding: 11px 13px;
+      border: 1px solid var(--line); border-radius: 10px;
+      background: #fff; color: var(--ink); font: inherit; font-size: 15px;
+      transition: border-color .15s, box-shadow .15s, background .15s;
+    }
+    textarea { min-height: 88px; resize: vertical; }
+    input::placeholder, textarea::placeholder { color: #9aa4b5; }
+    input:focus-visible, select:focus-visible, textarea:focus-visible, button:focus-visible, a:focus-visible {
+      outline: 3px solid var(--focus); outline-offset: 2px; border-color: var(--brand);
+    }
+    input:invalid:not(:placeholder-shown):not(:focus), input[aria-invalid="true"] {
+      border-color: var(--danger); background: #fffafa;
+    }
+    .hint { display: block; margin-top: 5px; color: var(--muted); font-size: 12px; }
+    .error { display: block; min-height: 0; margin-top: 5px; color: var(--danger); font-size: 12px; }
+    .error:empty { display: none; }
+    .password-wrap { position: relative; }
+    .password-wrap input { padding-right: 78px; }
+    .toggle-password {
+      position: absolute; right: 8px; top: 50%; transform: translateY(-50%);
+      border: 0; background: transparent; color: var(--brand-dark);
+      padding: 6px 8px; border-radius: 7px; font-size: 12px; font-weight: 700; cursor: pointer;
+    }
+    .primary {
+      width: 100%; min-height: 48px; border: 0; border-radius: 10px;
+      background: var(--brand); color: white; font: inherit; font-weight: 700;
+      cursor: pointer; transition: background .15s, transform .15s;
+    }
+    .primary:hover { background: var(--brand-dark); }
+    .primary:active { transform: translateY(1px); }
+    .links {
+      display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap;
+      margin-top: 18px; font-size: 13px;
+    }
+    a { color: var(--brand-dark); font-weight: 650; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .notice {
+      margin: 16px 0 0; padding: 11px 12px; border-radius: 9px;
+      background: #eef2ff; color: #3730a3; font-size: 13px;
+    }
+    .notice.error-notice { background: #fff1f1; color: var(--danger); }
+    .notice.success { background: #ecfdf3; color: var(--success); }
+    .row { display: grid; grid-template-columns: 1fr 1fr; gap: 13px; }
+    .avatar-note { margin: -7px 0 17px; color: var(--muted); font-size: 12px; }
+    .footer { text-align: center; margin: 18px 0 0; color: var(--muted); font-size: 12px; }
+    @media (max-width: 390px) { .row { grid-template-columns: 1fr; gap: 0; } }
+    @media (prefers-reduced-motion: reduce) { *, *::before, *::after { transition: none !important; } }
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <header class="brand">
+      <span class="brand-mark" aria-hidden="true">A</span>
+      <h1>Account Portal</h1>
+      <p>Your space starts here.</p>
+    </header>
+
+    <div class="card">
+      <!-- Registration -->
+      <section class="view" id="register-view" aria-labelledby="register-title">
+        <h2 id="register-title">Create your account</h2>
+        <p class="intro">Enter your details to get started.</p>
+        <form id="register-form">
+          <div class="field">
+            <label for="register-name">Full name</label>
+            <input id="register-name" name="name" type="text" autocomplete="name"
+                   placeholder="Your full name" minlength="2" maxlength="80" required>
+            <span class="error" id="register-name-error"></span>
+          </div>
+          <div class="field">
+            <label for="register-email">Email address</label>
+            <input id="register-email" name="email" type="email" autocomplete="email"
+                   placeholder="you@example.com" maxlength="254" required>
+            <span class="error" id="register-email-error"></span>
+          </div>
+          <div class="field">
+            <label for="register-password">Password</label>
+            <div class="password-wrap">
+              <input id="register-password" name="password" type="password"
+                     autocomplete="new-password" placeholder="At least 8 characters"
+                     minlength="8" maxlength="128" required>
+              <button class="toggle-password" type="button" data-toggle="register-password"
+                      aria-label="Show password">Show</button>
+            </div>
+            <span class="hint">Use at least 8 characters. A longer passphrase is even better.</span>
+            <span class="error" id="register-password-error"></span>
+          </div>
+          <div class="field">
+            <label for="register-confirm">Confirm password</label>
+            <input id="register-confirm" name="confirmPassword" type="password"
+                   autocomplete="new-password" placeholder="Re-enter your password" required>
+            <span class="error" id="register-confirm-error"></span>
+          </div>
+          <button class="primary" type="submit">Create account</button>
+          <div class="links"><span>Already have an account?</span><a href="#login" data-view="login">Log in</a></div>
+          <p class="notice" id="register-notice" role="status" aria-live="polite" hidden></p>
+        </form>
+      </section>
+
+      <!-- Login -->
+      <section class="view" id="login-view" aria-labelledby="login-title" hidden>
+        <h2 id="login-title">Welcome back</h2>
+        <p class="intro">Log in to continue to your account.</p>
+        <form id="login-form">
+          <div class="field">
+            <label for="login-email">Email address</label>
+            <input id="login-email" name="email" type="email" autocomplete="username"
+                   placeholder="you@example.com" required>
+            <span class="error" id="login-email-error"></span>
+          </div>
+          <div class="field">
+            <label for="login-password">Password</label>
+            <div class="password-wrap">
+              <input id="login-password" name="password" type="password"
+                     autocomplete="current-password" placeholder="Your password" required>
+              <button class="toggle-password" type="button" data-toggle="login-password"
+                      aria-label="Show password">Show</button>
+            </div>
+            <span class="error" id="login-password-error"></span>
+          </div>
+          <button class="primary" type="submit">Log in</button>
+          <div class="links">
+            <a href="#recover" data-view="recover">Forgot password?</a>
+            <a href="#register" data-view="register">Create account</a>
+          </div>
+          <p class="notice" id="login-notice" role="status" aria-live="polite" hidden></p>
+        </form>
+      </section>
+
+      <!-- Password recovery -->
+      <section class="view" id="recover-view" aria-labelledby="recover-title" hidden>
+        <h2 id="recover-title">Reset your password</h2>
+        <p class="intro">Enter the email address linked to your account. If an account exists, your service can send reset instructions.</p>
+        <form id="recover-form">
+          <div class="field">
+            <label for="recover-email">Email address</label>
+            <input id="recover-email" name="email" type="email" autocomplete="email"
+                   placeholder="you@example.com" required>
+            <span class="error" id="recover-email-error"></span>
+          </div>
+          <button class="primary" type="submit">Send reset instructions</button>
+          <div class="links"><a href="#login" data-view="login">Back to log in</a></div>
+          <p class="notice" id="recover-notice" role="status" aria-live="polite" hidden></p>
+        </form>
+      </section>
+
+      <!-- Profile setup -->
+      <section class="view" id="profile-view" aria-labelledby="profile-title" hidden>
+        <h2 id="profile-title">Set up your profile</h2>
+        <p class="intro">Add a few details to personalize your account.</p>
+        <form id="profile-form">
+          <div class="field">
+            <label for="profile-name">Display name</label>
+            <input id="profile-name" name="displayName" type="text" autocomplete="nickname"
+                   placeholder="How should we call you?" minlength="2" maxlength="40" required>
+            <span class="error" id="profile-name-error"></span>
+          </div>
+          <div class="field">
+            <label for="profile-bio">Short bio <span style="font-weight:400;color:#65718a">(optional)</span></label>
+            <textarea id="profile-bio" name="bio" maxlength="240"
+                      placeholder="Tell us a little about yourself"></textarea>
+            <span class="hint">Maximum 240 characters.</span>
+          </div>
+          <div class="row">
+            <div class="field">
+              <label for="profile-location">Location <span style="font-weight:400;color:#65718a">(optional)</span></label>
+              <input id="profile-location" name="location" type="text" autocomplete="address-level2"
+                     maxlength="80" placeholder="City">
+            </div>
+            <div class="field">
+              <label for="profile-website">Website <span style="font-weight:400;color:#65718a">(optional)</span></label>
+              <input id="profile-website" name="website" type="url" inputmode="url"
+                     placeholder="https://example.com">
+              <span class="error" id="profile-website-error"></span>
+            </div>
+          </div>
+          <button class="primary" type="submit">Save profile</button>
+          <div class="links"><a href="#login" data-view="login">Return to log in</a></div>
+          <p class="notice" id="profile-notice" role="status" aria-live="polite" hidden></p>
+        </form>
+      </section>
+    </div>
+    <p class="footer">Secure account flows require server-side authentication.</p>
+  </main>
+
+  <script>
+    const views = ["register", "login", "recover", "profile"];
+
+    function showView(name) {
+      if (!views.includes(name)) name = "register";
+      views.forEach(view => {
+        document.getElementById(`${view}-view`).hidden = view !== name;
+      });
+      history.replaceState(null, "", `#${name}`);
+      const heading = document.querySelector(`#${name}-title`);
+      if (heading) heading.focus?.();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    document.querySelectorAll("[data-view]").forEach(link => {
+      link.addEventListener("click", event => {
+        event.preventDefault();
+        showView(link.dataset.view);
+      });
+    });
+
+    window.addEventListener("hashchange", () => showView(location.hash.slice(1)));
+    showView(location.hash.slice(1) || "register");
+
+    document.querySelectorAll("[data-toggle]").forEach(button => {
+      button.addEventListener("click", () => {
+        const input = document.getElementById(button.dataset.toggle);
+        const reveal = input.type === "password";
+        input.type = reveal ? "text" : "password";
+        button.textContent = reveal ? "Hide" : "Show";
+        button.setAttribute("aria-label", `${reveal ? "Hide" : "Show"} password`);
+      });
+    });
+
+    function setNotice(id, message, kind = "") {
+      const notice = document.getElementById(id);
+      notice.textContent = message;
+      notice.className = `notice ${kind}`;
+      notice.hidden = false;
+    }
+
+    function clearErrors(form) {
+      form.querySelectorAll(".error").forEach(el => el.textContent = "");
+      form.querySelectorAll("[aria-invalid='true']").forEach(el => el.removeAttribute("aria-invalid"));
+      const notice = form.querySelector('[role="status"]');
+      if (notice) notice.hidden = true;
+    }
+
+    function showFieldError(input, message, errorId) {
+      input.setAttribute("aria-invalid", "true");
+      document.getElementById(errorId).textContent = message;
+    }
+
+    function attachNativeValidation(form) {
+      form.querySelectorAll("input, textarea, select").forEach(input => {
+        input.addEventListener("input", () => {
+          if (input.checkValidity()) {
+            input.removeAttribute("aria-invalid");
+            const error = document.getElementById(`${input.id}-error`);
+            if (error) error.textContent = "";
+          }
+        });
+      });
+    }
+    document.querySelectorAll("form").forEach(attachNativeValidation);
+
+    document.getElementById("register-form").addEventListener("submit", event => {
+      event.preventDefault();
+      const form = event.currentTarget;
+      clearErrors(form);
+      const password = form.elements.password;
+      const confirm = form.elements.confirmPassword;
+      if (!form.reportValidity()) return;
+      if (password.value !== confirm.value) {
+        showFieldError(confirm, "Passwords do not match.", "register-confirm-error");
+        confirm.focus();
+        return;
+      }
+      setNotice("register-notice",
+        "Front-end demo only: connect this form to a secure registration endpoint to create an account.", "");
+    });
+
+    document.getElementById("login-form").addEventListener("submit", event => {
+      event.preventDefault();
+      const form = event.currentTarget;
+      clearErrors(form);
+      if (!form.reportValidity()) return;
+      setNotice("login-notice",
+        "Front-end demo only: connect this form to your authentication API to verify credentials.", "");
+    });
+
+    document.getElementById("recover-form").addEventListener("submit", event => {
+      event.preventDefault();
+      const form = event.currentTarget;
+      clearErrors(form);
+      if (!form.reportValidity()) return;
+      setNotice("recover-notice",
+        "Demo only: your backend should return a neutral confirmation and send a time-limited, single-use reset link when appropriate.", "");
+    });
+
+    document.getElementById("profile-form").addEventListener("submit", event => {
+      event.preventDefault();
+      const form = event.currentTarget;
+      clearErrors(form);
+      if (!form.reportValidity()) return;
+      setNotice("profile-notice",
+        "Profile details validated in this demo. Connect the form to an authenticated profile API to save them.", "");
+    });
+  </script>
+</body>
+</html>
