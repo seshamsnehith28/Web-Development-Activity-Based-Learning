@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html >
+<head>
+    <title>NRI University</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #F2F5F7;
+            color: #333333;
+            margin: 0;
+        }
+
+        header {
+            background-color: #FFFFFF;
+            text-align: center;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #FF7900;
+            font-size: 32px;
+        }
+
+        h2 {
+            color: #FF7900;
+            text-align: center;
+        }
+
+        h3 {
+            color: #303A3D;
+        }
+
+        p {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        /* Navigation Bar */
+        nav {
+            background-color: #303A3D;
+            text-align: center;
+            padding: 15px;
+        }
+
+        nav a {
+            color: #FFFFFF;
+            text-decoration: none;
+            margin: 10px;
+            font-size: 15px;
+        }
+
+        nav a:hover {
+            color: #FF7900;
+        }
+
+        /* Banner */
+        .banner {
+            background-image: url("https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&w=1200&q=80");
+            background-size: cover;
+            background-position: center;
+            height: 300px;
+            padding: 40px;
+            text-align: center;
+            color: #FFFFFF;
+        }
+
+        .banner h2 {
+            color: #FFFFFF;
+            font-size: 35px;
+        }
+
+        .banner p {
+            font-size: 18px;
+        }
+
+        /* Container */
+        .container {
+            padding: 25px;
+            margin: 15px;
+        }
+
+        /* Information Cards */
+        .card {
+            background-color: #FFFFFF;
+            border: 2px solid #DDDDDD;
+            width: 280px;
+            padding: 15px;
+            margin: 10px;
+            display: inline-block;
+            vertical-align: top;
+            text-align: left;
+        }
+
+        .card img {
+            width: 100%;
+            height: 160px;
+        }
+
+        .card h3 {
+            background-color: #FF7900;
+            color: #FFFFFF;
+            padding: 10px;
+            text-align: center;
+        }
+
+        /* Links and Buttons */
+        .button {
+            background-color: #FF7900;
+            color: #FFFFFF;
+            padding: 10px;
+            text-decoration: none;
+            display: inline-block;
+            margin: 5px;
+        }
+
+        /* About Section */
+        .about {
+            background-color: #FFFFFF;
+            padding: 25px;
+            text-align: center;
+        }
+
+        /* Admissions */
+        .admission {
+            background-color: #FF7900;
+            color: #FFFFFF;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .admission h2 {
+            color: #FFFFFF;
+        }
+
+        /* Contact */
+        .contact {
+            background-color: #FFFFFF;
+            padding: 25px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #303A3D;
+            color: #FFFFFF;
+            text-align: center;
+            padding: 25px;
+        }
+
+        footer a {
+            color: #FFFFFF;
+            text-decoration: none;
+            margin: 8px;
+        }
+
+        hr {
+            border: 1px solid #FF7900;
+        }
+
+        /* Mobile-First Basic Design */
+        @media (max-width: 600px) {
+            .card {
+                width: 85%;
+                margin: 10px auto;
+                display: block;
+            }
+
+            .banner {
+                height: 250px;
+                padding: 20px;
+            }
+
+            .banner h2 {
+                font-size: 27px;
+            }
+
+            nav a {
+                display: inline-block;
+                margin: 7px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- University Header -->
+    <header id="home">
+        <h1>NRI UNIVERSITY</h1>
+        <p>Education | Innovation | Excellence</p>
+    </header>
+
+    <!-- Navigation -->
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#departments">Departments</a>
+        <a href="#faculty">Faculty</a>
+        <a href="#admissions">Admissions</a>
+        <a href="#facilities">Facilities</a>
+        <a href="#events">Events</a>
+        <a href="#contact">Contact</a>
+    </nav>
+
+    <!-- Banner -->
+    <div class="banner">
+        <h2>Welcome to NRI University</h2>
+        <p>Learn Today, Lead Tomorrow</p>
+        <a href="#departments" class="button">Explore Courses</a>
+        <a href="#admissions" class="button">Apply Now</a>
+    </div>
+
+    <hr>
+
+    <!-- About University -->
+    <div class="about" id="about">
+        <h2>About Our University</h2>
+        <p>
+            NRI University aims to provide quality education,
+            practical knowledge and professional skills.
+            Our goal is to encourage innovation, creativity
+            and academic excellence.
+        </p>
+
+        <p>
+            Students can develop their knowledge through
+            classroom learning, projects, research and
+            extracurricular activities.
+        </p>
+    </div>
+
+    <hr>
+
+    <!-- Departments -->
+    <div class="container" id="departments">
+        <h2>Our Departments</h2>
+        <p style="text-align:center;">
+            Explore our academic departments and courses.
+        </p>
+
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=500&q=80"
+                 alt="Computer Science">
+            <h3>Computer Science</h3>
+            <p>Learn programming, software development,
+               computer systems and algorithms.</p>
+            <a href="#admissions">Learn More</a>
+        </div>
+
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&w=500&q=80"
+                 alt="Artificial Intelligence">
+            <h3>AI and ML</h3>
+            <p>Study artificial intelligence, machine learning
+               and intelligent technologies.</p>
+            <a href="#admissions">Learn More</a>
+        </div>
+
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=500&q=80"
+                 alt="Data Science">
+            <h3>Data Science</h3>
+            <p>Learn data analytics, statistics and
+               data visualization.</p>
+            <a href="#admissions">Learn More</a>
+        </div>
+
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=500&q=80"
+                 alt="Electrical Engineering">
+            <h3>EEE</h3>
+            <p>Study electrical systems, power generation
+               and electrical engineering.</p>
+            <a href="#admissions">Learn More</a>
+        </div>
+
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=500&q=80"
+                 alt="Civil Engineering">
+            <h3>Civil Engineering</h3>
+            <p>Explore construction, structural design
+               and infrastructure development.</p>
+            <a href="#admissions">Learn More</a>
+        </div>
+
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=500&q=80"
+                 alt="Management">
+            <h3>Management</h3>
+            <p>Develop business, leadership, finance
+               and marketing skills.</p>
+            <a href="#admissions">Learn More</a>
+        </div>
+    </div>
+
+    <hr>
+
+    <!-- Faculty -->
+    <div class="container" id="faculty">
+        <h2>Our Faculty</h2>
+
+        <div class="card">
+            <h3>Computer Science Faculty</h3>
+            <p>Teaching programming and computer technology.</p>
+        </div>
+
+        <div class="card">
+            <h3>AI and ML Faculty</h3>
+            <p>Teaching artificial intelligence and machine learning.</p>
+        </div>
+
+        <div class="card">
+            <h3>Management Faculty</h3>
+            <p>Teaching business and management subjects.</p>
+        </div>
+    </div>
+
+    <hr>
+
+    <!-- Admissions -->
+    <div class="admission" id="admissions">
+        <h2>Admissions</h2>
+        <p>Start your journey towards a successful career.</p>
+
+        <h3>Admission Procedure</h3>
+
+        <ol>
+            <li>Choose your department and course.</li>
+            <li>Check the eligibility requirements.</li>
+            <li>Complete the application form.</li>
+            <li>Submit the required documents.</li>
+            <li>Complete the admission process.</li>
+        </ol>
+
+        <a href="#contact" class="button">Admission Enquiry</a>
+    </div>
+
+    <hr>
+
+    <!-- Campus Facilities -->
+    <div class="container" id="facilities">
+        <h2>Campus Facilities</h2>
+
+        <ul style="list-style-type:square;">
+            <li>Library and reading rooms</li>
+            <li>Computer laboratories</li>
+            <li>Sports and games facilities</li>
+            <li>Hostel facilities</li>
+            <li>Transportation facilities</li>
+            <li>Wi-Fi and digital classrooms</li>
+            <li>Student clubs and activities</li>
+        </ul>
+    </div>
+
+    <hr>
+
+    <!-- Events -->
+    <div class="container" id="events">
+        <h2>University Events</h2>
+
+        <div class="card">
+            <h3>Technical Fest</h3>
+            <p>Technical competitions, coding and project exhibitions.</p>
+        </div>
+
+        <div class="card">
+            <h3>Cultural Fest</h3>
+            <p>Music, dance and student cultural activities.</p>
+        </div>
+
+        <div class="card">
+            <h3>Guest Seminars</h3>
+            <p>Educational sessions and industry knowledge sharing.</p>
+        </div>
+    </div>
+
+    <hr>
+
+    <!-- Contact Details -->
+    <div class="contact" id="contact">
+        <h2>Contact Us</h2>
+
+        <p><b>University:</b> NRI University</p>
+        <p><b>Address:</b> Pothavarappadu (V), Agiripalli (M),Vijayawada Rural, Eluru District,Andhra Pradesh – 521212</p>
+        <p><b>Phone:</b> Contact the university admissions office</p>
+        <p><b>Email:</b> Contact the official university website</p>
+
+        <h3>Quick Links</h3>
+
+        <ul style="list-style-type:circle;">
+            <li><a href="#about">About University</a></li>
+            <li><a href="#departments">Academic Departments</a></li>
+            <li><a href="#admissions">Admissions</a></li>
+            <li><a href="#facilities">Campus Facilities</a></li>
+        </ul>
+
+            </div>
+
+    <!-- Footer -->
+    <footer>
+        <h3 style="color:#FF7900;">NRI UNIVERSITY</h3>
+        <p>Education for a Better Future</p>
+
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#departments">Departments</a>
+        <a href="#contact">Contact</a>
+
+        <br><br>
+
+        <hr>
+
+        
+    </footer>
+
+</body>
+</html>
