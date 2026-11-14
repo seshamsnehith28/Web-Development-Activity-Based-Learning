@@ -1,1 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Daily Times | Latest News</title>
 
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f5f5f5;
+    color: #222;
+    line-height: 1.6;
+}
+
+header {
+    background: #b90016;
+    color: white;
+    padding: 22px 5%;
+    text-align: center;
+}
+
+header h1 {
+    font-family: Georgia, serif;
+    font-size: 42px;
+    letter-spacing: -1px;
+}
+
+header p {
+    font-size: 12px;
+    letter-spacing: 3px;
+}
+
+.date {
+    background: #eeeeee;
+    padding: 8px 5%;
+    font-size: 12px;
+    display: flex;
+    justify-content: space-between;
+}
+
+nav {
+    background: white;
+    border-bottom: 2px solid #b90016;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 12px;
+    gap: 30px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #222;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+nav a:hover {
+    color: #b90016;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 25px auto;
+}
+
+.section-title {
+    border-left: 5px solid #b90016;
+    padding-left: 12px;
+    margin-bottom: 18px;
+    font-size: 23px;
+}
+
+.featured {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 20px;
+    margin-bottom: 35px;
+}
+
+.main-story, .side-story, .card {
+    background: white;
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px #00000012;
+}
+
+.main-story img {
+    width: 100%;
+    height: 340px;
+    object-fit: cover;
+}
+
+.side-story img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+}
+
+.story-content {
+    padding: 18px;
+}
+
+.category {
+    color: #b90016;
+    font-size: 12px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.story-content h2 {
+    font-family: Georgia, serif;
+    font-size: 25px;
+    line-height: 1.3;
+    margin: 8px 0;
+}
+
+.story-content p {
+    color: #666;
+    font-size: 14px;
+}
+
+.author {
+    color: #888;
+    font-size: 12px;
+    margin-top: 12px;
+}
+
+.side-stories {
+    display: grid;
+    gap: 15px;
+}
+
+.side-story .story-content h2 {
+    font-size: 17px;
+}
+
+.news-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-bottom: 35px;
+}
+
+.card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+
+.card .story-content h2 {
+    font-size: 19px;
+}
+
+.search-box {
+    display: flex;
+    gap: 8px;
+}
+
+.search-box input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 220px;
+}
+
+footer {
+    background: #222;
+    color: white;
+    text-align: center;
+    padding: 30px 10px;
+    margin-top: 40px;
+}
+
+footer p {
+    font-size: 13px;
+    color: #ccc;
+}
+
+@media(max-width: 768px) {
+    header h1 {
+        font-size: 30px;
+    }
+
+    nav {
+        gap: 15px;
+    }
+
+    .featured {
+        grid-template-columns: 1fr;
+    }
+
+    .news-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .main-story img {
+        height: 240px;
+    }
+
+    .date {
+        gap: 10px;
+        flex-wrap: wrap;
+    }
+}
+
+@media(max-width: 480px) {
+    .news-grid {
+        grid-template-columns: 1fr;
+    }
+
+    nav {
+        gap: 12px;
+    }
+
+    nav a {
+        font-size: 12px;
+    }
+
+    .container {
+        width: 94%;
+    }
+
+    .story-content h2 {
+        font-size: 21px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>THE DAILY TIMES</h1>
+    <p>INDIA'S NEWS DESTINATION</p>
+</header>
+
+<div class="date">
+    <span>Saturday, 14 November 2026</span>
+    <span>Latest News | Breaking Stories</span>
+</div>
+
+<nav>
+    <a href="#home">HOME</a>
+    <a href="#national">NATIONAL</a>
+    <a href="#international">INTERNATIONAL</a>
+    <a href="#sports">SPORTS</a>
+    <a href="#technology">TECHNOLOGY</a>
+    <a href="#business">BUSINESS</a>
+</nav>
+
+<main class="container" id="home">
+
+<!-- FEATURED NEWS -->
+
+<h2 class="section-title">Top Stories</h2>
+
+<section class="featured">
+
+    <article class="main-story">
+        <img src="https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?w=1000"
+        alt="Government building">
+
+        <div class="story-content">
+            <span class="category">National News</span>
+            <h2>India's Future: Major Developments Shaping the Nation</h2>
+            <p>
+                Explore important developments, public initiatives
+                and major stories shaping India's future.
+            </p>
+            <div class="author">
+                By Editorial Desk | 5 min read
+            </div>
+        </div>
+    </article>
+
+    <div class="side-stories">
+
+        <article class="side-story">
+            <img src="https://images.unsplash.com/photo-1521295121783-8a321d551ad2?w=800"
+            alt="World city">
+
+            <div class="story-content">
+                <span class="category">International</span>
+                <h2>World Leaders Focus on Global Cooperation</h2>
+                <div class="author">By News Team | 4 min read</div>
+            </div>
+        </article>
+
+        <article class="side-story">
+            <img src="https://images.unsplash.com/photo-1461896836934-ffe607ba8211?w=800"
+            alt="Sports running">
+
+            <div class="story-content">
+                <span class="category">Sports</span>
+                <h2>Sports World: The Latest Matches and Highlights</h2>
+                <div class="author">By Sports Desk | 3 min read</div>
+            </div>
+        </article>
+
+    </div>
+</section>
+
+<!-- NATIONAL NEWS -->
+
+<section id="national">
+<h2 class="section-title">National News</h2>
+
+<div class="news-grid">
+
+<article class="card">
+<img src="https://images.unsplash.com/photo-1587474260584-136574528ed5?w=700"
+alt="India Gate">
+<div class="story-content">
+<span class="category">India</span>
+<h2>Important Updates From Across India</h2>
+<p>Discover major national developments and public affairs.</p>
+<div class="author">By National Desk | 4 min read</div>
+</div>
+</article>
+
+<article class="card">
+<img src="https://images.unsplash.com/photo-1541872703-74c5e44368f9?w=700"
+alt="Parliament">
+<div class="story-content">
+<span class="category">Politics</span>
+<h2>Government and Policy: Key Developments</h2>
+<p>Updates on governance, policies and public decisions.</p>
+<div class="author">By Political Correspondent | 5 min read</div>
+</div>
+</article>
+
+<article class="card">
+<img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=700"
+alt="Indian agriculture">
+<div class="story-content">
+<span class="category">Development</span>
+<h2>New Initiatives for Rural Development</h2>
+<p>Explore agriculture, infrastructure and rural growth.</p>
+<div class="author">By Staff Reporter | 3 min read</div>
+</div>
+</article>
+
+</div>
+</section>
+
+<!-- INTERNATIONAL -->
+
+<section id="international">
+<h2 class="section-title">International News</h2>
+<div class="news-grid">
+
+<article class="card">
+<img src="https://images.unsplash.com/photo-1519501025264-65ba15a82390?w=700"
+alt="Global city">
+<div class="story-content">
+<span class="category">World</span>
+<h2>Global Cities and Changing World Trends</h2>
+<p>Important updates from countries around the world.</p>
+<div class="author">By World Desk | 4 min read</div>
+</div>
+</article>
+
+<article class="card">
+<img src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=700"
+alt="International meeting">
+<div class="story-content">
+<span class="category">Diplomacy</span>
+<h2>International Partnerships and Cooperation</h2>
+<p>Latest developments in global relations.</p>
+<div class="author">By International Desk | 5 min read</div>
+</div>
+</article>
+
+<article class="card">
+<img src="https://images.unsplash.com/photo-1470770841072-f978cf4d019e?w=700"
+alt="World landscape">
+<div class="story-content">
+<span class="category">Environment</span>
+<h2>Climate and Environmental Challenges</h2>
+<p>Stories about sustainability and our planet.</p>
+<div class="author">By Environment Desk | 3 min read</div>
+</div>
+</article>
+
+</div>
+</section>
+
+<!-- SPORTS -->
+
+<section id="sports">
+<h2 class="section-title">Sports News</h2>
+<div class="news-grid">
+
+<article class="card">
+<img src="https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?w=700"
+alt="Cricket stadium">
+<div class="story-content">
+<span class="category">Cricket</span>
+<h2>Cricket: Latest Updates and Match Highlights</h2>
+<p>Follow cricket matches, teams and tournament news.</p>
+<div class="author">By Sports Desk | 4 min read</div>
+</div>
+</article>
+
+<article class="card">
+<img src="https://images.unsplash.com/photo-1508098682722-e99c643e7f0b?w=700"
+alt="Football">
+<div class="story-content">
+<span class="category">Football</span>
+<h2>Football: Global Clubs and Tournament Updates</h2>
+<p>Discover the latest football news and results.</p>
+<div class="author">By Football Reporter | 3 min read</div>
+</div>
+</article>
+
+<article class="card">
+<img src="https://images.unsplash.com/photo-1461896836934-ffe607ba8211?w=700"
+alt="Athletics">
+<div class="story-content">
+<span class="category">Athletics</span>
+<h2>Athletes Prepare for Major Sporting Events</h2>
+<p>Read about sporting achievements and competitions.</p>
+<div class="author">By Sports Reporter | 4 min read</div>
+</div>
+</article>
+
+</div>
+</section>
+
+<!-- TECHNOLOGY -->
+
+<section id="technology">
+<h2 class="section-title">Technology News</h2>
+<div class="news-grid">
+
+<article class="card">
+<img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?w=700"
+alt="Artificial intelligence">
+<div class="story-content">
+<span class="category">Artificial Intelligence</span>
+<h2>AI Technology Continues to Transform the World</h2>
+<p>Explore artificial intelligence and new innovations.</p>
+<div class="author">By Tech Desk | 5 min read</div>
+</div>
+</article>
+
+<article class="card">
+<img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=700"
+alt="Technology team">
+<div class="story-content">
+<span class="category">Innovation</span>
+<h2>New Digital Innovations Changing Everyday Life</h2>
+<p>Technology trends, gadgets and digital developments.</p>
+<div class="author">By Technology Reporter | 4 min read</div>
+</div>
+</article>
+
+<article class="card">
+<img src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=700"
+alt="Computer hardware">
+<div class="story-content">
+<span class="category">Gadgets</span>
+<h2>Exploring the Future of Computing Technology</h2>
+<p>Latest developments in computers and electronics.</p>
+<div class="author">By Tech Team | 3 min read</div>
+</div>
+</article>
+
+</div>
+</section>
+
+<!-- BUSINESS -->
+
+<section id="business">
+<h2 class="section-title">Business News</h2>
+<div class="news-grid">
+
+<article class="card">
+<img src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=700"
+alt="Financial market">
+<div class="story-content">
+<span class="category">Markets</span>
+<h2>Stock Market and Financial Market Updates</h2>
+<p>Business trends, market movements and financial news.</p>
+<div class="author">By Business Desk | 4 min read</div>
+</div>
+</article>
+
+<article class="card">
+<img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=700"
+alt="Business analytics">
+<div class="story-content">
+<span class="category">Economy</span>
+<h2>Economic Developments and Industry Trends</h2>
+<p>Understand business growth and economic changes.</p>
+<div class="author">By Economy Reporter | 5 min read</div>
+</div>
+</article>
+
+<article class="card">
+<img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=700"
+alt="Corporate buildings">
+<div class="story-content">
+<span class="category">Companies</span>
+<h2>Companies and Startups: Latest Developments</h2>
+<p>Discover business stories and startup innovations.</p>
+<div class="author">By Corporate Desk | 3 min read</div>
+</div>
+</article>
+
+</div>
+</section>
+
+</main>
+
+<footer>
+<h2>THE DAILY TIMES</h2>
+<p>National | International | Sports | Technology | Business</p>
+<p>© 2026 The Daily Times. All Rights Reserved.</p>
+<p>Independent news website design project.</p>
+</footer>
+
+</body>
+</html>
